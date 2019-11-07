@@ -142,7 +142,7 @@ export default class SkillHero {
 
   play() {
     this.start = Date.now() + 1000;
-    // this.update();
+    this.update();
   }
 
   update() {

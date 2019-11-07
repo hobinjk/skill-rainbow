@@ -1,6 +1,8 @@
 body {
   background: #111;
   font-family: sans-serif;
+  height: 100%;
+  overflow: hidden;
 }
 
 .casts-container {
@@ -8,7 +10,6 @@ body {
   bottom: 100px;
   left: 50%;
   transform: translate(-50%, 0);
-  border-bottom: 1px solid white;
 }
 
 .cast {
