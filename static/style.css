@@ -1,0 +1,16 @@
+.casts-container {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.cast {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(0, 0);
+  width: 28px;
+  background: purple;
+}
+
