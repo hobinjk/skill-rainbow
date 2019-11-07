@@ -1,8 +1,14 @@
+body {
+  background: #111;
+  font-family: sans-serif;
+}
+
 .casts-container {
   position: absolute;
   bottom: 100px;
   left: 50%;
   transform: translate(-50%, 0);
+  border-bottom: 1px solid white;
 }
 
 .cast {
@@ -11,6 +17,15 @@
   left: 0;
   transform: translate(0, 0);
   width: 28px;
-  background: purple;
+  text-align: center;
+}
+
+.cast-text {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: black;
+  text-shadow: 1px 1px 2px #aaa;
 }
 
