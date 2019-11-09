@@ -1,0 +1,40 @@
+body {
+  background: #111;
+  font-family: sans-serif;
+  height: 100%;
+  overflow: hidden;
+}
+
+.casts-container {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.skill-bar {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+
+.cast {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(0, 0);
+  width: 28px;
+  text-align: center;
+}
+
+.cast-text {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: black;
+  text-shadow: 1px 1px 2px #aaa;
+}
+
