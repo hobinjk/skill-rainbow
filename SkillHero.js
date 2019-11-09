@@ -15,14 +15,18 @@ let binds = {
   // 'Gravity Well': 'b',
   // 'Continuum Split': '%',
   // 'Weapon Swap': '`',
-  // 'Glyph of Elemental Power (Fire)': 'q',
-  // 'Primordial Stance': 'e',
-  // 'Signet of Fire': 'r',
-  // 'Weave Self': 'b',
-  // Fire: '!',
-  // Water: '@',
-  // Air: '#',
-  // Earth: '$',
+  'Glyph of Elemental Power (Fire)': 'q',
+  'Primordial Stance': 'e',
+  'Signet of Fire': 'r',
+  'Weave Self': 'b',
+  Fire: '!',
+  Water: '@',
+  Air: '#',
+  Earth: '$',
+  'Magnetic Wave': '4',
+};
+
+let normalBinds = {
   'Glyph of Elemental Power (Fire)': '7',
   'Signet of Fire': '8',
   'Primordial Stance': '9',
@@ -32,6 +36,10 @@ let binds = {
   Air: 'F3',
   Earth: 'F4',
 };
+
+if (window.useNormalBinds) {
+  binds = Object.assign(binds, normalBinds);
+}
 
 function attunementSwapCasts(bench) {
   let attunements = {};
@@ -69,8 +77,9 @@ function buffApplyCasts(bench, skillId) {
     if (!event.hasOwnProperty('Apply')) {
       continue;
     }
+    let label = binds[bench.skills[skillId]];
     casts.push({
-      label: binds[bench.skills[skillId]],
+      label: label,
       start: event.Apply,
       end: event.Apply,
     });
@@ -95,11 +104,13 @@ export default class SkillHero {
     await SkillData.load(this.bench.skills);
     console.log(this.bench);
 
+    let magWave = buffApplyCasts(this.bench, SkillIds.MAGNETIC_WAVE);
     let primStance = buffApplyCasts(this.bench, SkillIds.PRIMORDIAL_STANCE);
     let goep = buffApplyCasts(this.bench,
                               SkillIds.GLYPH_OF_ELEMENTAL_POWER_FIRE);
     let attunes = attunementSwapCasts(this.bench);
-    this.bench.casts = this.bench.casts.concat(primStance, goep, attunes);
+    this.bench.casts = this.bench.casts.concat(magWave, primStance, goep,
+                                               attunes);
 
     for (let cast of this.bench.casts) {
       let data = SkillData.get(cast.id);
@@ -112,7 +123,7 @@ export default class SkillHero {
         }
       }
       if (!label) {
-        console.warn('noooo', this.bench.skills[cast.id]);
+        console.warn('noooo', this.bench.skills[cast.id], cast);
       }
       let slot = Object.values(binds).indexOf(label);
       let castText = document.createElement('div');
