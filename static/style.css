@@ -12,6 +12,14 @@ body {
   transform: translate(-50%, 0);
 }
 
+.skill-bar {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+
 .cast {
   position: absolute;
   top: 0;
