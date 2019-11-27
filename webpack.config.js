@@ -8,7 +8,10 @@ module.exports = {
     filename: 'main.js',
   },
   plugins: [
-    new CopyWebpackPlugin([{from: 'static'}]),
+    new CopyWebpackPlugin([{
+      from: 'static',
+      ignore: ['.*'], // ignore all hidden (git) files
+    }]),
   ],
   mode: 'production',
 };
